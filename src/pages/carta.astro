@@ -9,7 +9,23 @@ const workexperience = await getCollection('workexperience');
 ---
 
 <Layout title="Welcome to Astro.">
-	<FrontPage/>
+	<section>
+		<div class="px-4">
+			<div class="grid">
+				{
+					
+					workexperience.map((work: { slug: any; data: any; }) => {
+						const { slug, data } = work
+						const { title, company, description, technologies} = data
+
+						const card = <CardWork title={title}, technologies={technologies} description={description} company={company}/>;
+
+						return (card)
+					})
+				}
+			</div>
+		</div>
+	</section>
 </Layout>
 
 <style>
