@@ -20,10 +20,11 @@ import Footer from '../components/Footer.astro';
 		
 		<title>{title}</title>
 	</head>
-	<body class="">
-		<slot />
+	<body>
+		<slot/>
+		<Footer/>
 	</body>
-	<Footer/>
+	
 </html>
 <style is:global>
 	:root {
