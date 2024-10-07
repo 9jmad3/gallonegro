@@ -1,0 +1,57 @@
+---
+import type { arrayOutputType } from 'astro:schema';
+
+interface Props {
+	title: string;
+	tapaPrice: string;
+	dishPrice: string;
+    description: string;
+    allergens: any;
+}
+
+const { title, tapaPrice, dishPrice, allergens, description } = Astro.props;
+
+---
+
+<div class="bg-gray-800 rounded-xl p-3 my-3 hover:p-3 hover:bg-gray-700 transition-all">
+
+
+  <div class="sm:flex sm:justify-between sm:gap-4">
+    <div>
+      <h3 class="text-lg font-bold text-white sm:text-xl">
+        {title}
+      </h3>
+    </div>
+
+  </div>
+  
+  {allergens.map((allergens: string) => {
+    let classStyle = "bg-blue-500 center relative inline-block select-none whitespace-nowrap rounded-lg py-2 px-2 mr-2 mt-2 align-baseline text-xs font-bold uppercase leading-none text-white";
+
+    return( <div class={classStyle}>
+            <div class="mt-px">{allergens}</div></div>);
+    })}
+
+  <div class="mt-4">
+    <p class="text-pretty text-sm text-white">
+      {description}
+    </p>
+  </div>
+
+  <dl class="mt-6 flex gap-4 sm:gap-6">
+    {tapaPrice && 
+      <div class="">
+        <p class="text-sm font-medium text-white">Tapa</p>
+        <p class="text-xs text-white">{tapaPrice}</p>
+      </div>
+    }
+
+    <div class="">
+        <p class="text-sm font-medium text-white">Ración</p>
+        <p class="text-xs text-white">{dishPrice}</p>
+    </div>
+  </dl>
+</div>
+
+<style>
+</style>

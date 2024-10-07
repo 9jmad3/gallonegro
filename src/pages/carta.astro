@@ -1,29 +1,85 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import CardWork from '../components/CardWork.astro';
-import FrontPage from '../components/FrontPage.astro';
+import CardMeal from '../components/CardMeal.astro';
+import CardCheese from '../components/CardCheese.astro';
+import Menu from '../components/Menu.astro';
 import { getCollection } from 'astro:content';
 
-const workexperience = await getCollection('workexperience');
+const meal = await getCollection('meal');
+const papelon = await getCollection('papelones');
+const cheese = await getCollection('cheese');
 ---
 
-<Layout title="Welcome to Astro.">
-	<section>
+<Layout title="Gallo Negro">
+	<nav class="sticky top-0 z-50 bg-gradient-to-tr from-red-700 to-red-800">
+		<section class="grid justify-items-center p-4">
+			<Menu/>
+		</section>
+	</nav>
+	
+	<section class="bg-gray-900 sm:bg-transparent sm:from-gray-900/95 sm:to-gray-900/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l">
 		<div class="px-4">
-			<div class="grid">
+
+			<span class="flex items-center p-6">
+				<span class="h-px flex-1 bg-white"></span>
+				<h2 class="text-2xl uppercase mx-2 text-white">Tapas</h2>
+				<span class="h-px flex-1 bg-white"></span>
+			</span>
+
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
 				{
 					
-					workexperience.map((work: { slug: any; data: any; }) => {
+					meal.map((work: { slug: any; data: any; }) => {
 						const { slug, data } = work
-						const { title, company, description, technologies} = data
+						const { title, tapaPrice, dishPrice, description, allergens} = data
 
-						const card = <CardWork title={title}, technologies={technologies} description={description} company={company}/>;
+						const card = <CardMeal title={title} tapaPrice={tapaPrice} dishPrice={dishPrice} description={description} allergens={allergens} />;
 
 						return (card)
 					})
 				}
 			</div>
+
+			<span class="flex items-center p-6">
+				<span class="h-px flex-1 bg-white"></span>
+				<h2 class="text-2xl uppercase mx-2 text-white">Papelones</h2>
+				<span class="h-px flex-1 bg-white"></span>
+			</span>
+
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
+				{
+					
+					papelon.map((work: { slug: any; data: any; }) => {
+						const { slug, data } = work
+						const { title, tapaPrice, dishPrice, description, allergens} = data
+
+						const card = <CardMeal title={title} tapaPrice={tapaPrice} dishPrice={dishPrice} description={description} allergens={allergens} />;
+
+						return (card)
+					})
+				}
+			</div>
+
+			<span class="flex items-center p-6">
+				<span class="h-px flex-1 bg-white"></span>
+				<h2 class="text-2xl uppercase mx-2 text-white">Quesos</h2>
+				<span class="h-px flex-1 bg-white"></span>
+			</span>
+
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
+				{
+					
+					cheese.map((work: { slug: any; data: any; }) => {
+						const { slug, data } = work
+						const { title, tapaPrice, dishPrice, description} = data
+
+						const card = <CardCheese title={title} tapaPrice={tapaPrice} dishPrice={dishPrice} description={description} />;
+
+						return (card)
+					})
+				}
+			</div>
+
 		</div>
 	</section>
 </Layout>
