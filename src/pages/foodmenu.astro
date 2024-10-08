@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import CardMeal from '../components/CardMeal.astro';
 import CardCheese from '../components/CardCheese.astro';
-import Menu from '../components/Menu.astro';
+import Navigation from '../components/Navigation.astro';
 import { getCollection } from 'astro:content';
 
 const meal = await getCollection('meal');
@@ -11,9 +11,9 @@ const cheese = await getCollection('cheese');
 ---
 
 <Layout title="Gallo Negro">
-	<nav class="sticky top-0 z-50 bg-gray-900 shadow-xl border-4 border-gray-900 border-b-gray-800 ">
+	<nav class="sticky top-0 z-50 bg-gray-900 shadow-xl">
 		<section class="grid justify-items-center p-4">
-			<Menu/>
+			<Navigation />
 		</section>
 	</nav>
 	

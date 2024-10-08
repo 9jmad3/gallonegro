@@ -30,4 +30,11 @@ const cheese = defineCollection({
     })
 })
 
-export const collections = {meal, papelon, cheese};
+const drink = defineCollection({
+    schema: z.object({
+        title: z.string(),
+        price: z.string(),
+        type: z.string(),
+    })
+})
+export const collections = {meal, papelon, cheese, drink};

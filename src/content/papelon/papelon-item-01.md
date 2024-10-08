@@ -1,6 +1,6 @@
 ---
 title: Mojama
-tapaPrice: '-'
+tapaPrice: ''
 dishPrice: 9,00
 description: ''
 allergens: ['']
